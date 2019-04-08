@@ -1,0 +1,12 @@
+---
+groups:
+- name: "host check"
+  rules:
+  - alert: "check_host_status"
+    expr: up < 1
+    for: 10s
+    labels:
+      severity: High
+    annotations:
+      summary: "host {{$labels.instance}} is down"
+      description: "the host {{$labels.instance}} is down"
